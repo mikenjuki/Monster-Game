@@ -17,9 +17,11 @@ function attackHandler() {
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamage;
 
-    if (currentMonsterHealth <= 0) {
+    if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert("You Won!");
-    } else if (currentPlayerHealth <=0) {
+    } else if (currentPlayerHealth <=0 && currentMonsterHealth > 0) {
         alert("You almost got it! Try Again.");
+    } else if (currentMonsterHealth <= 0 && currentPlayerHealth <= 0) {
+        alert("It's a draw!");
     }
 }
