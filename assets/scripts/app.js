@@ -10,6 +10,12 @@ let hasBonusLife = true;
 
 adjustHealthBars(userInputLife);
 
+function reset() {
+    currentMonsterHealth = userInputLife;
+    currentPlayerHealth = userInputLife;
+    resetGame(userInputLife);
+}
+
 
 function endRound() {
     const initialPlayerHealth = currentPlayerHealth;
@@ -26,10 +32,13 @@ function endRound() {
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert("You Won!");
+        resetGame();
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert("You almost got it! Try Again.");
+        resetGame();
     } else if (currentMonsterHealth <= 0 && currentPlayerHealth <= 0) {
         alert("It's a draw!");
+        resetGame();
     }
 }
 
