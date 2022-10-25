@@ -6,13 +6,23 @@ const HEAL_VALUE = 16;
 let userInputLife = 100;
 let currentMonsterHealth = userInputLife;
 let currentPlayerHealth = userInputLife;
+let hasBonusLife = true;
 
 adjustHealthBars(userInputLife);
 
 
 function endRound() {
+    const initialPlayerHealth = currentPlayerHealth;
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamage;
+
+    if (currentPlayerHealth <= 0 && hasBonusLife) {
+        hasBonusLife = false;
+        removeBonusLife();
+        currentPlayerHealth = initialPlayerHealth;
+        setPlayerHealth(initialPlayerHealth);
+        alert("Phew! you gained a life.");
+    }
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert("You Won!");
