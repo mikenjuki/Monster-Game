@@ -3,12 +3,18 @@ const MONSTER_ATTACK_VALUE = 14;
 const STRONG_ATTACK_VALUE = 17;
 const HEAL_VALUE = 16;
 
-let userInputLife = 100;
 let currentMonsterHealth = userInputLife;
 let currentPlayerHealth = userInputLife;
 let hasBonusLife = true;
 
 adjustHealthBars(userInputLife);
+
+const enteredValue = prompt("Enter your starting health.", "100");
+let userInputLife = parseInt(enteredValue);
+
+if (isNaN(enteredValue) || userInputLife <= 0) {
+    userInputLife = 100;
+}
 
 function reset() {
     currentMonsterHealth = userInputLife;
